@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Registration</h1>
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <!-- First Name -->
+        <div>
+            <label>First Name:</label>
+            <input type="text" th:field="*{firstName}">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
+        </div>
+
+        <!-- Middle Name (Optional) -->
+        <div>
+            <label>Middle Name:</label>
+            <input type="text" th:field="*{middleName}">
+        </div>
+
+        <!-- Last Name -->
+        <div>
+            <label>Last Name:</label>
+            <input type="text" th:field="*{lastName}">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
+        </div>
+
+        <!-- Mobile Number -->
+        <div>
+            <label>Mobile Number:</label>
+            <input type="text" th:field="*{mobileNumber}">
+            <span th:if="${#fields.hasErrors('mobileNumber')}" th:errors="*{mobileNumber}" class="error"></span>
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+        </div>
+
+        <!-- Gender -->
+        <div>
+            <label>Gender:</label>
+            <select th:field="*{gender}">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error"></span>
+        </div>
+
+        <!-- Address -->
+        <div>
+            <label>Address:</label>
+            <textarea th:field="*{address}"></textarea>
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
